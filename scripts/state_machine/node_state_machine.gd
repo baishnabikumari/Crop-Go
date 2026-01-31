@@ -4,7 +4,7 @@ extends Node
 @export var initial_node_state : NodeState
 
 var node_states : Dictionary = {}
-var current_node_state : NodeState
+var current_node_state
 var current_node_state_name : String
 
 func _ready() -> void:
@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	if current_node_state:
 		current_node_state._on_physics_process(delta)
 		current_node_state._on_next_transition()
+		print("Current State: ", current_node_state_name)
 		
 func transition_to(node_state_name : String) -> void:
 	if node_state_name == current_node_state.name.to_lower():
