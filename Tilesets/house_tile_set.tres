@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cf2jvjortp7pn" path="res://assets/game/tilesets/wooden_house_walls_tilset.png" id="1_0e3uf"]
 [ext_resource type="Texture2D" uid="uid://dtx7tsjuml4hs" path="res://assets/game/objects/basic_furniture.png" id="2_juxxr"]
+[ext_resource type="PackedScene" uid="uid://1ccu2eivaxwj" path="res://scenes/houses/door.tscn" id="3_s4u7f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e3uf"]
 texture = ExtResource("1_0e3uf")
@@ -99,7 +100,11 @@ texture = ExtResource("2_juxxr")
 7:5/size_in_atlas = Vector2i(2, 1)
 7:5/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7tasb"]
+scenes/1/scene = ExtResource("3_s4u7f")
+
 [resource]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0e3uf")
 sources/1 = SubResource("TileSetAtlasSource_s4u7f")
+sources/2 = SubResource("TileSetScenesCollectionSource_7tasb")
