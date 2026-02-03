@@ -16,29 +16,29 @@ shader_parameter/shake_speed = 20.0
 atlas = ExtResource("1_ivetc")
 region = Rect2(16, 0, 32, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0ia52"]
-radius = 5.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4wgc"]
+size = Vector2(8, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivetc"]
-size = Vector2(16, 21)
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4wgc"]
+radius = 13.009612
 
 [node name="LargeTree" type="Sprite2D" unique_id=455812963]
+z_index = -1
 material = SubResource("ShaderMaterial_6vpey")
-position = Vector2(0, -9)
 texture = SubResource("AtlasTexture_6vpey")
 script = ExtResource("2_f4wgc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1153198063]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=984896893]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_0ia52")
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_f4wgc")
 
 [node name="HurtComponents" parent="." unique_id=1486126623 instance=ExtResource("2_wjqkr")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponents" unique_id=1977087573]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_ivetc")
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_f4wgc")
 debug_color = Color(0.9227567, 5.005598e-05, 0.6882264, 0.41960785)
 
 [node name="DamageComponent" parent="." unique_id=776693115 instance=ExtResource("3_f4wgc")]
