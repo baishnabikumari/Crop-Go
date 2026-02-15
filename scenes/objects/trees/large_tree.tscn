@@ -17,22 +17,27 @@ atlas = ExtResource("1_ivetc")
 region = Rect2(16, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4wgc"]
-size = Vector2(8, 6)
+size = Vector2(6, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4wgc"]
-radius = 13.009612
+radius = 11.0
 
 [node name="LargeTree" type="Sprite2D" unique_id=455812963]
-z_index = -1
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_6vpey")
+position = Vector2(0, -15)
 texture = SubResource("AtlasTexture_6vpey")
 script = ExtResource("2_f4wgc")
+
+[node name="TreeSprite" type="Sprite2D" parent="." unique_id=363889006]
+position = Vector2(0, 15)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1153198063]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=984896893]
 position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_f4wgc")
+debug_color = Color(0.75241494, 0.45842487, 1.92523e-07, 0.41960785)
 
 [node name="HurtComponents" parent="." unique_id=1486126623 instance=ExtResource("2_wjqkr")]
 

@@ -395,12 +395,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xnwo"]
-size = Vector2(10, 9)
+size = Vector2(11, 9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djydg"]
 radius = 3.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1086766131]
+[node name="Player" type="CharacterBody2D" unique_id=1244176270]
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_6avc5")
@@ -410,20 +410,19 @@ current_tool = 1
 y_sort_enabled = true
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_omk8d")
-animation = &"idle_back"
+animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471945828]
-position = Vector2(0, -5.5)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_3xnwo")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1869738429 node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("3_hss88")
 initial_node_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1479978349 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1479978349 node_paths=PackedStringArray("animated_sprite_2d")]
 script = ExtResource("4_qd3e3")
-player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="Walk" type="Node" parent="StateMachine" unique_id=759561388 node_paths=PackedStringArray("player", "animated_sprite_2d")]
@@ -431,20 +430,17 @@ script = ExtResource("5_qd3e3")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Chopping" type="Node" parent="StateMachine" unique_id=1840862473 node_paths=PackedStringArray("player", "animated_sprite_2d", "hit_component_collision_shape")]
+[node name="Chopping" type="Node" parent="StateMachine" unique_id=1840862473 node_paths=PackedStringArray("animated_sprite_2d", "hit_component_collision_shape")]
 script = ExtResource("7_mk55u")
-player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape2D")
 
-[node name="Tilling" type="Node" parent="StateMachine" unique_id=1708967680 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+[node name="Tilling" type="Node" parent="StateMachine" unique_id=1708967680 node_paths=PackedStringArray("animated_sprite_2d")]
 script = ExtResource("8_xuses")
-player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Watering" type="Node" parent="StateMachine" unique_id=1616235396 node_paths=PackedStringArray("player", "animated_sprite_2d")]
+[node name="Watering" type="Node" parent="StateMachine" unique_id=1616235396 node_paths=PackedStringArray("animated_sprite_2d")]
 script = ExtResource("9_42irl")
-player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="HitComponent" parent="." unique_id=1268973563 instance=ExtResource("10_3xnwo")]

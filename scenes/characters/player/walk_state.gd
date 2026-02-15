@@ -10,6 +10,8 @@ func _on_process(_delta : float) -> void:
 func _on_physics_process(_delta : float) -> void:
 	var direction: Vector2 = GameInputEvents.movement_input()
 	
+	print("walk state active", direction)
+	
 	if direction == Vector2.UP:
 		animated_sprite_2d.play("walk_back")
 	elif direction == Vector2.RIGHT:
@@ -19,11 +21,17 @@ func _on_physics_process(_delta : float) -> void:
 	elif direction == Vector2.LEFT:
 		animated_sprite_2d.play("walk_left")
 		
-	if direction != Vector2.ZERO:
+	if direction != Vector2.ZERO and player:
 		player.player_direction = direction
+		print("setting player direction to", direction)
 	
-	player.velocity = direction * speed
-	player.move_and_slide()
+	if player:
+		player.velocity = direction * speed
+		print("setting velocity to", player.velocity)
+		player.move_and_slide()
+		print("after move_and_slide position: ", player.position)
+	else:
+		print("player is null")
 	
 func _on_next_transition() -> void:
 	if !GameInputEvents.is_movement_input():

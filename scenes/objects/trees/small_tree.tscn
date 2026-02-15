@@ -1,48 +1,23 @@
 [gd_scene format=3 uid="uid://2onxxyfsg7b3"]
 
 [ext_resource type="Texture2D" uid="uid://c8mdhoiynqr6h" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_a8qts"]
-[ext_resource type="Shader" uid="uid://6h7yu4qwit23" path="res://scenes/objects/shake.gdshader" id="1_w057i"]
-[ext_resource type="Script" uid="uid://bx600a8tnmkho" path="res://scenes/objects/trees/small_tree.gd" id="2_g5iuu"]
-[ext_resource type="PackedScene" uid="uid://baoo31lpuwe6k" path="res://scenes/components/hurt_components.tscn" id="2_xyb6m"]
-[ext_resource type="PackedScene" uid="uid://bwg1rqvjhnuoe" path="res://scenes/components/damage_component.tscn" id="4_w057i"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_skbjc"]
-resource_local_to_scene = true
-shader = ExtResource("1_w057i")
-shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 20.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xyb6m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8qts"]
 atlas = ExtResource("1_a8qts")
 region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w057i"]
-size = Vector2(6, 6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyb6m"]
+size = Vector2(5, 6)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w057i"]
-radius = 7.0
-height = 22.0
+[node name="SmallTree" type="StaticBody2D" unique_id=49123448]
+y_sort_enabled = true
 
-[node name="SmallTree" type="Sprite2D" unique_id=272847175]
-material = SubResource("ShaderMaterial_skbjc")
-position = Vector2(0, -5)
-texture = SubResource("AtlasTexture_xyb6m")
-script = ExtResource("2_g5iuu")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=693272637]
+texture = SubResource("AtlasTexture_a8qts")
+centered = false
+offset = Vector2(0, -32)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=232491078]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1011344958]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_w057i")
-
-[node name="HurtComponents" parent="." unique_id=1486126623 instance=ExtResource("2_xyb6m")]
-collision_layer = 1
-
-[node name="HurtComponentCollisionShape2D" type="CollisionShape2D" parent="HurtComponents" unique_id=538969751]
-position = Vector2(0, -5)
-shape = SubResource("CapsuleShape2D_w057i")
-debug_color = Color(0.899811, 0.00017384827, 0.7662749, 0.41960785)
-
-[node name="DamageComponent" parent="." unique_id=776693115 instance=ExtResource("4_w057i")]
-position = Vector2(0, 8)
-max_damage = 3
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=550703513]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_xyb6m")
+debug_color = Color(0.7222101, 0.47888088, 0, 0.41960785)
