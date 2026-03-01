@@ -1,27 +1,56 @@
-extends Sprite2D
+extends StaticBody2D
 
-@onready var hurt_components: HurtComponent = $HurtComponents
-@onready var damage_component: DamageComponent = $DamageComponent
+@export var hurt_component: HurtComponent
+@export var damage_component: DamageComponent
+@export var canopy: Sprite2D
+@export var trunk: Sprite2D
 
+# Optional: preload log scene to drop when tree is chopped
 var log_scene = preload("res://scenes/objects/trees/log.tscn")
 
-func _ready() -> void:
-	hurt_components.hurt.connect(on_hurt)
-	damage_component.max_damaged_reached.connect(on_max_damaged_reached)
+func _ready():
+	print("Tree initialized: ", name)
 	
-func on_hurt(hit_damage: int) -> void:
-	damage_component.apply_damage(hit_damage)
-	material.set_shader_parameter("shake_intensity", 0.5)
-	await get_tree().create_timer(1.0).timeout
-	material.set_shader_parameter("shake_intensity", 0.0)
+	# Connect signals
+	if hurt_component:
+		hurt_component.hurt.connect(_on_hurt)
+		print("HurtComponent connected!")
+	else:
+		print("WARNING: HurtComponent not assigned!")
 	
+	if damage_component:
+		damage_component.max_damaged_reached.connect(_on_tree_destroyed)
+		print("DamageComponent connected!")
+	else:
+		print("WARNING: DamageComponent not assigned!")
+
+func _on_hurt(damage_amount: int):
+	print("Tree was hit! Taking ", damage_amount, " damage")
 	
-func on_max_damaged_reached() -> void:
-	call_deferred("add_log_scene")
-	print("max damaged reached")
+	if damage_component:
+		damage_component.apply_damage(damage_amount)
+		print("Tree damage: ", damage_component.current_damage, "/", damage_component.max_damage)
+	
+	shake_tree()
+
+func _on_tree_destroyed():
+	print("Tree has been chopped down!")
+	drop_log()
 	queue_free()
-	
-func add_log_scene() -> void:
-	var log_instance = log_scene.instantiate() as Node2D
-	log_instance.global_position = global_position
-	get_parent().add_child(log_instance)
+
+func shake_tree():
+	if canopy:
+		var tween = create_tween()
+		tween.tween_property(canopy, "position:x", 2, 0.05)
+		tween.tween_property(canopy, "position:x", -2, 0.05)
+		tween.tween_property(canopy, "position:x", 0, 0.05)
+
+func drop_log():
+	print("Log dropped at: ", global_position)
+	if log_scene:
+		var log = log_scene.instantiate()
+		get_parent().add_child(log)
+		log.global_position = global_position + Vector2(0, 8)
+		print("Log spawned")
+	else:
+		print("Log scene not found")

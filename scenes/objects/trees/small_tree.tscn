@@ -1,18 +1,35 @@
 [gd_scene format=3 uid="uid://2onxxyfsg7b3"]
 
 [ext_resource type="Texture2D" uid="uid://c8mdhoiynqr6h" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_a8qts"]
+[ext_resource type="Script" uid="uid://bx600a8tnmkho" path="res://scenes/objects/trees/small_tree.gd" id="2_g5iuu"]
+[ext_resource type="Script" uid="uid://r54go1tofxjy" path="res://scenes/components/hurt_components.gd" id="2_xyb6m"]
+[ext_resource type="Script" uid="uid://dxh8emr2oqng4" path="res://scenes/components/damage_component.gd" id="4_g5iuu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8qts"]
 atlas = ExtResource("1_a8qts")
-region = Rect2(0, 0, 16, 32)
+region = Rect2(0, 0, 16, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyb6m"]
 size = Vector2(5, 6)
 
-[node name="SmallTree" type="StaticBody2D" unique_id=49123448]
-y_sort_enabled = true
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyb6m"]
+atlas = ExtResource("1_a8qts")
+region = Rect2(0, 0, 16, 32)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=693272637]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8qts"]
+radius = 4.0
+height = 14.0
+
+[node name="SmallTree" type="StaticBody2D" unique_id=49123448 node_paths=PackedStringArray("hurt_component", "damage_component", "canopy", "trunk")]
+y_sort_enabled = true
+script = ExtResource("2_g5iuu")
+hurt_component = NodePath("HurtComponent")
+damage_component = NodePath("DamageComponent")
+canopy = NodePath("Canopy")
+trunk = NodePath("Trunk")
+
+[node name="Canopy" type="Sprite2D" parent="." unique_id=693272637]
+z_index = 1
 texture = SubResource("AtlasTexture_a8qts")
 centered = false
 offset = Vector2(0, -32)
@@ -21,3 +38,24 @@ offset = Vector2(0, -32)
 position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_xyb6m")
 debug_color = Color(0.7222101, 0.47888088, 0, 0.41960785)
+
+[node name="Trunk" type="Sprite2D" parent="." unique_id=2063370433]
+position = Vector2(8, 16)
+texture = SubResource("AtlasTexture_xyb6m")
+offset = Vector2(0, -32)
+
+[node name="HurtComponent" type="Area2D" parent="." unique_id=1609977519]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_xyb6m")
+tool = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent" unique_id=247273801]
+position = Vector2(8, -10)
+shape = SubResource("CapsuleShape2D_a8qts")
+debug_color = Color(0.8284269, 0, 0.14218765, 0.41960785)
+
+[node name="DamageComponent" type="Node2D" parent="." unique_id=1584429864]
+script = ExtResource("4_g5iuu")
+max_damage = 3
+metadata/_custom_type_script = "uid://dxh8emr2oqng4"

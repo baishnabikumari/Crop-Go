@@ -410,7 +410,7 @@ current_tool = 1
 y_sort_enabled = true
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_omk8d")
-animation = &"idle_front"
+animation = &"idle_right"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471945828]
@@ -419,7 +419,7 @@ shape = SubResource("RectangleShape2D_3xnwo")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1869738429 node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("3_hss88")
-initial_node_state = NodePath("Idle")
+initial_node_state = NodePath("Walk")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1479978349 node_paths=PackedStringArray("animated_sprite_2d")]
 script = ExtResource("4_qd3e3")
@@ -430,10 +430,11 @@ script = ExtResource("5_qd3e3")
 player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Chopping" type="Node" parent="StateMachine" unique_id=1840862473 node_paths=PackedStringArray("animated_sprite_2d", "hit_component_collision_shape")]
+[node name="Chopping" type="Node" parent="StateMachine" unique_id=1840862473 node_paths=PackedStringArray("player", "animated_sprite_2d", "axe_hitbox")]
 script = ExtResource("7_mk55u")
+player = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-hit_component_collision_shape = NodePath("../../HitComponent/HitComponentCollisionShape2D")
+axe_hitbox = NodePath("../../HitComponent")
 
 [node name="Tilling" type="Node" parent="StateMachine" unique_id=1708967680 node_paths=PackedStringArray("animated_sprite_2d")]
 script = ExtResource("8_xuses")
@@ -444,6 +445,8 @@ script = ExtResource("9_42irl")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="HitComponent" parent="." unique_id=1268973563 instance=ExtResource("10_3xnwo")]
+monitoring = false
+monitorable = false
 current_tool = 1
 
 [node name="HitComponentCollisionShape2D" type="CollisionShape2D" parent="HitComponent" unique_id=1117278905]

@@ -1,4 +1,4 @@
-extends Sprite2D
+extends StaticBody2D
 
 @onready var hurt_components: HurtComponent = $HurtComponents
 @onready var damage_component: DamageComponent = $DamageComponent
@@ -21,6 +21,10 @@ func on_max_damaged_reached() -> void:
 	queue_free()
 	
 func add_log_scene() -> void:
-	var log_instance = log_scene.instantiate() as Node2D
-	log_instance.global_position = global_position
-	get_parent().add_child(log_instance)
+	if log_scene:
+		var log_instance = log_scene.instantiate() as Node2D
+		log_instance.global_position = global_position
+		get_parent().add_child(log_instance)
+		print("Large log spawned at: ", global_position)
+	else:
+		print("log scene not found")

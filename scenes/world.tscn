@@ -30,36 +30,6 @@ shader = ExtResource("4_qfnet")
 shader_parameter/shake_intensity = 0.0
 shader_parameter/shake_speed = 20.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7r4gi"]
-resource_local_to_scene = true
-shader = ExtResource("4_qfnet")
-shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 20.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7kh3"]
-resource_local_to_scene = true
-shader = ExtResource("4_qfnet")
-shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 20.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3hyu"]
-resource_local_to_scene = true
-shader = ExtResource("4_qfnet")
-shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 20.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5onr"]
-resource_local_to_scene = true
-shader = ExtResource("4_qfnet")
-shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 20.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhx03"]
-resource_local_to_scene = true
-shader = ExtResource("4_qfnet")
-shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 20.0
-
 [node name="World" type="Node2D" unique_id=1064800125]
 z_as_relative = false
 y_sort_enabled = true
@@ -80,38 +50,36 @@ position = Vector2(51, 242)
 
 [node name="Trees" type="Node2D" parent="YSort" unique_id=2037973475]
 
-[node name="LargeTree" parent="YSort/Trees" unique_id=455812963 instance=ExtResource("3_71j4m")]
-material = SubResource("ShaderMaterial_71j4m")
-position = Vector2(229, 325)
-
-[node name="LargeTree2" parent="YSort/Trees" unique_id=248681999 instance=ExtResource("3_71j4m")]
-material = SubResource("ShaderMaterial_qfnet")
-position = Vector2(119, 288)
-
-[node name="LargeTree3" parent="YSort/Trees" unique_id=98766640 instance=ExtResource("3_71j4m")]
-material = SubResource("ShaderMaterial_i7141")
-position = Vector2(141, 306)
-
-[node name="LargeTree4" parent="YSort/Trees" unique_id=1027561170 instance=ExtResource("3_71j4m")]
-material = SubResource("ShaderMaterial_4mrxx")
-position = Vector2(249, 287)
-
-[node name="LargeTree5" parent="YSort/Trees" unique_id=1409189989 instance=ExtResource("3_71j4m")]
-material = SubResource("ShaderMaterial_7r4gi")
-position = Vector2(290, 287)
-
-[node name="LargeTree6" parent="YSort/Trees" unique_id=1999591752 instance=ExtResource("3_71j4m")]
-material = SubResource("ShaderMaterial_w7kh3")
-position = Vector2(513, 310)
-
-[node name="LargeTree7" parent="YSort/Trees" unique_id=817018813 instance=ExtResource("3_71j4m")]
-material = SubResource("ShaderMaterial_e3hyu")
-position = Vector2(486, 326)
-
-[node name="LargeTree8" parent="YSort/Trees" unique_id=1526188975 instance=ExtResource("3_71j4m")]
-material = SubResource("ShaderMaterial_q5onr")
-position = Vector2(413, 285)
-
 [node name="SmallTree" parent="YSort/Trees" unique_id=272847175 instance=ExtResource("5_i7141")]
-material = SubResource("ShaderMaterial_jhx03")
+material = SubResource("ShaderMaterial_71j4m")
 position = Vector2(19, 289)
+
+[node name="SmallTree2" parent="YSort/Trees" unique_id=49123448 instance=ExtResource("5_i7141")]
+material = SubResource("ShaderMaterial_qfnet")
+position = Vector2(45, 302)
+
+[node name="SmallTree3" parent="YSort/Trees" unique_id=1239669364 instance=ExtResource("5_i7141")]
+material = SubResource("ShaderMaterial_i7141")
+position = Vector2(476, 335)
+
+[node name="SmallTree4" parent="YSort/Trees" unique_id=1681555981 instance=ExtResource("5_i7141")]
+material = SubResource("ShaderMaterial_4mrxx")
+position = Vector2(496, 323)
+
+[node name="LargeTree" parent="YSort/Trees" unique_id=293427129 instance=ExtResource("3_71j4m")]
+position = Vector2(87, 305)
+
+[node name="LargeTree2" parent="YSort/Trees" unique_id=1740743725 instance=ExtResource("3_71j4m")]
+position = Vector2(123, 324)
+
+[node name="LargeTree3" parent="YSort/Trees" unique_id=844855644 instance=ExtResource("3_71j4m")]
+position = Vector2(153, 324)
+
+[node name="LargeTree4" parent="YSort/Trees" unique_id=694242888 instance=ExtResource("3_71j4m")]
+position = Vector2(186, 328)
+
+[node name="LargeTree5" parent="YSort/Trees" unique_id=1629132493 instance=ExtResource("3_71j4m")]
+position = Vector2(207, 305)
+
+[node name="LargeTree6" parent="YSort/Trees" unique_id=222886118 instance=ExtResource("3_71j4m")]
+position = Vector2(504, 327)

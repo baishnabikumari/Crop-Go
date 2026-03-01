@@ -23,13 +23,12 @@ func _on_physics_process(_delta : float) -> void:
 		
 	if direction != Vector2.ZERO and player:
 		player.player_direction = direction
-		print("setting player direction to", direction)
+		print("saved player direction", player.player_direction)
 	
 	if player:
 		player.velocity = direction * speed
 		print("setting velocity to", player.velocity)
 		player.move_and_slide()
-		print("after move_and_slide position: ", player.position)
 	else:
 		print("player is null")
 	

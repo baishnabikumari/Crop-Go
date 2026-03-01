@@ -19,12 +19,12 @@ func _on_physics_process(_delta : float) -> void:
 		animated_sprite_2d.play("idle_front")
 	
 func _on_next_transition() -> void:
-	GameInputEvents.movement_input()
+	var movement = GameInputEvents.movement_input()
 	
-	print("checking movement input")
-	if GameInputEvents.is_movement_input():
+	if movement != Vector2.ZERO:
 		transition.emit("Walk")
-		
+		return
+	
 	if player and player.current_tool == DataTypes.Tools.AxeWood && GameInputEvents.use_tool():
 		transition.emit("chopping")
 		
@@ -34,10 +34,8 @@ func _on_next_transition() -> void:
 	if player and player.current_tool == DataTypes.Tools.WaterCrops && GameInputEvents.use_tool():
 		transition.emit("watering")
 		
-	
 
-func _on_enter() -> void:
-	pass
 	
 func _on_exit() -> void:
+	print("=== EXITING IDLE STATE ===")
 	animated_sprite_2d.stop()
